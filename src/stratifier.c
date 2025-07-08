@@ -574,7 +574,7 @@ static void generate_coinbase(ckpool_t *ckp, workbase_t *wb)
 	len += wb->enonce2varlen;
 
 	wb->coinb2bin = ckzalloc(512);
-	memcpy(wb->coinb2bin, "\x0a\x63\x6b\x70\x6f\x6f\x6c", 7);
+	memcpy(wb->coinb2bin, "\x0a\x64\x6f\x63\x6b\x65\x72", 7);
 	wb->coinb2len = 7;
 	if (ckp->btcsig) {
 		int siglen = strlen(ckp->btcsig);
@@ -6947,7 +6947,7 @@ static void send_auth_success(ckpool_t *ckp, sdata_t *sdata, stratum_instance_t 
 {
 	char *buf;
 
-	ASPRINTF(&buf, "Authorised, welcome to %s %s!", ckp->name,
+	ASPRINTF(&buf, "Authorised. Welcome to %s %s!", ckp->name,
 		 client->user_instance->username);
 	stratum_send_message(sdata, client, buf);
 	free(buf);
